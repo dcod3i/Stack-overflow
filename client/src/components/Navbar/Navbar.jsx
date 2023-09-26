@@ -15,11 +15,11 @@ const Navbar = ({ handleSlideIn }) => {
   var User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     dispatch({ type: "LOGOUT" });
     navigate("/");
     dispatch(setCurrentUser(null));
-  };
+  });
 
   useEffect(() => {
     const token = User?.token;
